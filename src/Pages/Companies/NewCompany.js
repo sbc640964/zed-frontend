@@ -6,6 +6,7 @@ import FormElements from "../../Components/Forms";
 import {useState} from "react";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import SecondaryButton from "../../Components/Buttons/SecondaryButton";
+import {useToasts} from "react-toast-notifications";
 
 function NewCompany(props)
 {
@@ -14,9 +15,15 @@ function NewCompany(props)
         active: true,
     });
 
+    const {addToast} = useToasts();
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e)
+        addToast('error', {
+            type: 'error',
+            autoDismiss: true,
+            isRunning: true,
+        });
     }
 
     const handleChange = e => {

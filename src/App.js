@@ -3,17 +3,24 @@ import {BrowserRouter as Router,} from 'react-router-dom';
 import Switch from "./Router";
 import NavItem from "./Components/Nav/NavItem";
 import {ToastProvider} from 'react-toast-notifications';
-import Card from "./Components/Cards/Card";
+import Notifications from "./Components/Notifications/Notifications";
+
+import { AnimatePresence, motion } from "framer-motion"
 
 function App() {
 
     const MyToast = (props) => {
         console.log(props)
         return(
-            <Card>
-                <button onClick={props.onDismiss}>dddd</button>
-                
-            </Card>
+            <AnimatePresence>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <Notifications {...props}/>
+                </motion.div>
+            </AnimatePresence>
         )
     }
 

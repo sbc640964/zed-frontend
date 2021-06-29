@@ -22,7 +22,6 @@ function NewCompany(props)
         addToast('error', {
             type: 'error',
             autoDismiss: true,
-            isRunning: true,
         });
     }
 

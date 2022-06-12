@@ -19,8 +19,23 @@ function HeadColumn(props)
         }
     }
 
+    const styles = {wordBreak: 'break-word'};
+
+    if(col.width){
+        styles.width = col.width
+        styles.flex =  `0 0 ${col.width}`
+    }else{
+        styles.flex =  '1 0 0px'
+    }
+
+    //flex items-center break-words w-full" style={{flex: '1 0 0px', wordBreak: 'break-word'}}
+
     return(
-        <div className={`group flex w-full text-sm items-center space-s-2 justify-${col.align ?? (col.type === 'active' ? 'center' : 'start')}`}  onClick={sortRows}>
+        <div
+            className={`group flex w-full text-sm items-center space-s-2 justify-${col.align ?? (col.type === 'active' ? 'center' : 'start')}`}
+            onClick={sortRows}
+            style={styles}
+        >
             <span className={col.sortable ? 'cursor-pointer hover:text-gray-500' : ''}>{col.label}</span>
             {col.sortable &&
             <span className={col.sortable ? 'cursor-pointer hover:text-gray-500' : ''}>

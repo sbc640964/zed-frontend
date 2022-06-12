@@ -20,9 +20,9 @@ function Row(props)
     }
 
     return (
-        <div className="flex space-s-4 py-2 text-sm font-light px-7 border-b hover:bg-gray-50">
+        <div className="flex space-s-4 py-2 text-sm font-light px-7 border-b hover:bg-gray-50 w-full">
             {globalOptions.selectedRows &&
-            <div className="pe-3 w-12 flex justify-center">
+            <div className="pe-3 w-12 flex justify-center items-center">
                 <Checkbox
                     value={rowsSelected.isSelected(row)}
                     onChange={handleChange}

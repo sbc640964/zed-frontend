@@ -1,4 +1,5 @@
 import Description from "../typography/Description";
+import Error from "./Error";
 
 function Switcher(props)
 {
@@ -19,9 +20,11 @@ function Switcher(props)
 
     return(
         <>
-            <div className="font-medium text-gray-700 text-sm">
-                {label}
-            </div>
+            {label &&
+                <div className="font-medium text-gray-700 text-sm">
+                    {label}
+                </div>
+            }
             <div className="mt-1 flex rounded-md">
 
                 <div
@@ -32,7 +35,7 @@ function Switcher(props)
                     onClick={handleClick}
                 >
                     <div
-                        className={`inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200 ${checked ? 'translate-x-5' : 'translate-x-0'}`}
+                        className={`inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200 ${checked ? '-translate-x-5' : '-translate-x-0'}`}
                         aria-hidden="true"
                     >
                     </div>
@@ -45,7 +48,7 @@ function Switcher(props)
                 </div>
             </div>
             {errors &&
-                <p className="text-error-400 text-sm mt-1">{errors}</p>
+                <Error errors={errors}/>
             }
             {description &&
                 <Description>{description}</Description>

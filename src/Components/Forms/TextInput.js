@@ -1,4 +1,5 @@
 import Description from "../typography/Description";
+import Error from "./Error";
 
 function TextInput(props)
 {
@@ -7,7 +8,10 @@ function TextInput(props)
         description,
         placeholder,
         errors,
+        className,
     } = props;
+
+    const classes = `${className ?? ''} mt-1 relative rounded-lg shadow-sm border-gray-300 block w-full placeholder-gray-400 transition duration-150 ease-in-out text-sm focus:ring-primary-200 focus:ring-2 focus:border-0 focus:border-primary-300`
 
     return(
         <>
@@ -17,12 +21,14 @@ function TextInput(props)
                     {...props}
                     type="text"
                     placeholder={placeholder}
-                    className="mt-1 relative rounded-md shadow-sm border-gray-300 block w-full placeholder-gray-400 transition duration-150 ease-in-out text-sm focus:ring-primary-200 focus:ring-2 focus:border-0 focus:border-primary-300"/>
+                    className={classes}/>
             </label>
             {errors &&
-                <p className="text-error-400 text-sm mt-1">{errors}</p>
+                <Error errors={errors}/>
             }
-            <Description>{description}</Description>
+            {description &&
+                <Description>{description}</Description>
+            }
         </>
     )
 }

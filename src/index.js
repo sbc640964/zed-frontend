@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+window.basePath = 'http://laravel.test:8010/';
+window.baseApiPath = 'http://laravel.test:8010/api';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

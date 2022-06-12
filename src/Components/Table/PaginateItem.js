@@ -18,7 +18,7 @@ function PaginateItem(props)
         }
     }
     return(
-        <a href className={defaultClass + ' ' + specificClasses} onClick={handleClick}>
+        <a href className={defaultClass + ' ' + specificClasses} onClick={handleClick} >
             {children}
         </a>
     )

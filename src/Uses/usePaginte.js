@@ -41,7 +41,8 @@ function usePaginate(props)
         }
     }
 
-    const goToPage = (page) => {
+    const goToPage = (item) => {
+        let page = item.label;
         if(page > totalPages) page = totalPages;
         if(page < 1) page = 1;
         setCurrentPageNumber(page);

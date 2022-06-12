@@ -4,13 +4,19 @@ import {useHistory} from 'react-router-dom'
 function Button (props)
 {
     const {
+        _class,
         className,
         size,
         to,
         onClick,
+        disabled:d,
+        tag,
     } = props;
 
     const history = useHistory();
+
+    const disabled = d === true;
+
 
     const sizeClasses = {
         xs: 'p-1.5 px-3.5 text-xs',
@@ -27,15 +33,20 @@ function Button (props)
         }
     }
 
-    const defaultClassName = 'rounded-lg font-semibold';
+    const defaultClassName = 'rounded-lg font-semibold cursor-pointer';
+
+    const disabledClasses = 'cursor-not-allowed opacity-60';
+
+    const TagName = tag ?? 'button';
 
     return (
-        <button
-            className={className + ' ' + defaultClassName + ' ' + sizeClasses}
+        <TagName
+            className={(_class ?? '') + ' ' + className + ' ' + defaultClassName + ' ' + sizeClasses + (disabled ? ' ' + disabledClasses : '')}
             onClick={handleClick}
+            disabled={disabled}
         >
             {props.children}
-        </button>
+        </TagName>
     )
 }
 
